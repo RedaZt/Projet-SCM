@@ -124,51 +124,58 @@ class Window(QtWidgets.QWidget):
         )
 
     def printResults(self):
-        x = len(self.solution.resultat)
-        y = len(self.solution.resultat[0])
+        x = self.table.rowCount() - 1
+        y = self.table.columnCount() - 1
         
         self.table2 = QtWidgets.QTableWidget(x, y, self)
         setHeaders(self.table2)
+        fillTable(self.table2, self.solution.resultat)
+
         self.buttonResult = QtWidgets.QPushButton(f"Cout Final = {self.solution.coutFinal}", self)
-        self.buttonShowIterations = QtWidgets.QPushButton('Afficher les iterations', self)
-
-        for row in range(self.table2.rowCount()):
-            for col in range(self.table2.columnCount()):
-                item = QtWidgets.QTableWidgetItem(str(self.solution.resultat[row][col]))
-                item.setTextAlignment(QtCore.Qt.AlignCenter)
-                self.table2.setItem(row, col, item)
+        # self.buttonShowIterations = QtWidgets.QPushButton('Afficher les iterations', self)
         
-        self.layout.addWidget(self.table2, 3, 0, 4, 8)
+        self.layout.addWidget(self.table2, 3, 0, 5, 8)
         self.layout.addWidget(self.buttonResult, 8, 0, 2, 8)
-        self.layout.addWidget(self.buttonShowIterations, 11, 0, 1, 8)
-        self.buttonShowIterations.clicked.connect(self.showIterations)
-    
-    def showIterations(self) : 
-        self.buttonShowResult = QtWidgets.QPushButton("Afficher resultat final", self)
-        self.table3 = QtWidgets.QTableWidget(2, 4, self)
-        setHeaders(self.table3)
-        fillTableWithZeros(self.table3)
-        self.table4 = QtWidgets.QTableWidget(2, 4, self)
-        setHeaders(self.table4)
-        fillTableWithZeros(self.table4)
-        self.layout.addWidget(self.table3, 3, 0, 4, 8)
-        self.layout.addWidget(self.table4, 7, 0, 4, 8)
-        self.layout.addWidget(self.buttonShowResult, 11, 0, 1, 8)
-        self.buttonShowResult.clicked.connect(self.bringBackResult)
+        # self.layout.addWidget(self.buttonShowIterations, 11, 0, 1, 8)
 
-    def bringBackResult(self) :
-        self.layout.removeWidget(self.table3)
-        self.table3.deleteLater()
-        self.layout.removeWidget(self.table4)
-        self.table4.deleteLater()
-        self.layout.removeWidget(self.buttonShowResult)
-        self.buttonShowResult.deleteLater()
-        self.printResults()
+        # self.buttonShowIterations.clicked.connect(self.showIterations)
+    
+    # def showIterations(self) : 
+    #     x = self.table.rowCount() - 1
+    #     y = self.table.columnCount() - 1
+
+    #     self.buttonShowResult = QtWidgets.QPushButton("Afficher resultat final", self)
+    #     self.table3 = QtWidgets.QTableWidget(x, y, self)
+    #     setHeaders(self.table3)
+    #     fillTable(self.table3, self.solution.iterations[0])
+    #     self.table4 = QtWidgets.QTableWidget(x, y, self)
+    #     setHeaders(self.table4)
+    #     fillTable(self.table4, self.solution.iterations[1])
+    #     self.layout.addWidget(self.table3, 3, 0, 4, 8)
+    #     self.layout.addWidget(self.table4, 7, 0, 4, 8)
+    #     self.layout.addWidget(self.buttonShowResult, 11, 0, 1, 8)
+    #     self.buttonShowResult.clicked.connect(self.bringBackResult)
+
+    # def bringBackResult(self) :
+    #     self.layout.removeWidget(self.table3)
+    #     self.table3.deleteLater()
+    #     self.layout.removeWidget(self.table4)
+    #     self.table4.deleteLater()
+    #     self.layout.removeWidget(self.buttonShowResult)
+    #     self.buttonShowResult.deleteLater()
+    #     self.printResults()
        
 def fillTableWithZeros(table):
         for row in range(table.rowCount()):
             for col in range(table.columnCount()):
                 item = QtWidgets.QTableWidgetItem('0')
+                item.setTextAlignment(QtCore.Qt.AlignCenter)
+                table.setItem(row, col, item)
+
+def fillTable(table, data):
+        for row in range(table.rowCount()):
+            for col in range(table.columnCount()):
+                item = QtWidgets.QTableWidgetItem(str(data[row][col]))
                 item.setTextAlignment(QtCore.Qt.AlignCenter)
                 table.setItem(row, col, item)
 
