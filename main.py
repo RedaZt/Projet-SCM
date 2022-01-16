@@ -122,7 +122,7 @@ class Window(QtWidgets.QWidget):
         self.resultTable = QtWidgets.QTableWidget(x, y, self)
         setHeaders(self.resultTable)
         fillTable(self.resultTable, self.solution.resultat)
-        self.buttonResult = QtWidgets.QPushButton(f"Cout Final = {self.solution.coutFinal}", self)
+        self.buttonResult = QtWidgets.QPushButton(f"Cout Total = {self.solution.coutFinal}", self)
         self.buttonShowIterations = QtWidgets.QPushButton('Afficher les iterations', self)
         
         self.layout.addWidget(self.resultTable, 3, 0, 5, 8)
