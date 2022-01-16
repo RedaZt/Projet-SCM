@@ -1,5 +1,3 @@
-#TODO : Find a better method to choosing the minimal cost
-
 import copy
 
 class CoutMinimal:
@@ -9,9 +7,6 @@ class CoutMinimal:
         self.demandes = demandes
         self.iterations, self.resultat = self.coutMinimal()
         self.coutFinal = self.calculateCost()
-
-    def isValidTable(self):
-        return sum(self.stocks) == sum(self.demandes)
 
     def coutMinimal(self):
         iterations = []
@@ -54,12 +49,3 @@ class CoutMinimal:
             for j in range(len(self.couts[i])):
                 coutFinal += self.couts[i][j] * self.resultat[i][j]
         return coutFinal
-        
-# couts = [[5,4,11,5,11,8],[7,2,18,11,4,5],[10,7,11,17,8,12],[11,7,15,15,11,16]]
-# stocks = [120,300,410,250]
-# demandes = [100,210,200,250,200,120] 
-
-# exemple = CoutMinimal(couts, stocks, demandes)
-# print(exemple.resultat)
-# print(exemple.iterations)
-# print(exemple.coutFinal)

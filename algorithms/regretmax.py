@@ -9,9 +9,6 @@ class RegretMax:
         self.demandes = demandes
         self.iterations, self.resultat = self.regretMax()
         self.coutFinal = self.calculateCost()
-
-    def isValidTable(self):
-        return sum(self.stocks) == sum(self.demandes)
     
     def regretMax(self):
         iterations = []
@@ -109,7 +106,6 @@ class RegretMax:
 
         return iterations, resultat
         
-
     def calculateCost(self):
         coutFinal = 0
 
@@ -117,27 +113,3 @@ class RegretMax:
             for j in range(len(self.couts[i])):
                 coutFinal+= self.couts[i][j] * self.resultat[i][j]
         return coutFinal
-        
-# couts = [[10,6,3,5,25],[5,2,6,12,5]]
-# stocks = [49,30]
-# demandes = [15,20,5,25,14]
-
-# couts = [[7,12,1,5,9],[15,3,12,6,14],[8,16,10,12,7],[18,8,17,11,16]]
-# stocks = [12,11,14,8]
-# demandes = [10,11,15,5,4]
-# resultat=[]
-# s=0
-
-# couts = [
-#     [21,11,84,49,13],
-#     [27,52,43,29,42],
-#     [11,47,14,80,93],
-#     [52,94,76,74,54]
-#     ]
-# stocks = [896,782,943,928]
-# demandes = [800,439,50,790,1470]
-
-# exemple = RegretMax(couts, stocks, demandes)
-# print(exemple.resultat)
-# print(exemple.iterations)
-# print(exemple.coutFinal)
