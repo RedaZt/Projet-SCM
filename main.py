@@ -7,8 +7,7 @@ from algorithms.regretmax import RegretMax
 class Window(QtWidgets.QWidget):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
-        self.setWindowTitle(self.tr('Projet Supply Chain Management'))
-        # self.setWindowIcon(QtGui.QIcon("icon.png"))
+        self.setWindowTitle(self.tr('Projet Supply Chain Management Par Reda Zitouni'))
 
         self.n = 0 
 
@@ -17,10 +16,10 @@ class Window(QtWidgets.QWidget):
         fillTableWithZeros(self.mainTable)
         self.textbox = QtWidgets.QLineEdit()
         
-        self.buttonAddRow = QtWidgets.QPushButton('Add Row', self)
-        self.buttonRemoveRow = QtWidgets.QPushButton('Remove Row', self)
-        self.buttonAddColumn = QtWidgets.QPushButton('Add Column', self)
-        self.buttonRemoveColumn = QtWidgets.QPushButton('Remove Column', self)
+        self.buttonAddRow = QtWidgets.QPushButton('Ajouter une ligne', self)
+        self.buttonRemoveRow = QtWidgets.QPushButton('Supprimer une ligne', self)
+        self.buttonAddColumn = QtWidgets.QPushButton('Ajouter une colonne', self)
+        self.buttonRemoveColumn = QtWidgets.QPushButton('Supprimer une colonne', self)
         self.buttonNorthWest = QtWidgets.QPushButton('Nord-Ouest', self)
         self.buttonCoutMinimal = QtWidgets.QPushButton('Cout Minimal', self)
         self.buttonRegretMax = QtWidgets.QPushButton('Regret Maximal', self)
@@ -53,9 +52,8 @@ class Window(QtWidgets.QWidget):
 
     def removeRow(self):
         if  self.mainTable.rowCount() > 0 :
-            self.mainTable.removeRow(
-                self.mainTable.rowCount() - 1
-            )
+            self.mainTable.removeRow(self.mainTable.rowCount() - 1)
+        
         self.setHeadersForMainTable()
 
     def addColumn(self):
@@ -68,27 +66,19 @@ class Window(QtWidgets.QWidget):
 
     def removeColumn(self):
         if  self.mainTable.columnCount() > 0 :
-            self.mainTable.removeColumn(
-                self.mainTable.columnCount() - 1
-            )
+            self.mainTable.removeColumn(self.mainTable.columnCount() - 1)
+
         self.setHeadersForMainTable()
 
     def setHeadersForMainTable(self):
-        rowsHeaders = ""
-        for row in range(self.mainTable.rowCount()-1):
-            rowsHeaders += f"S{row+1}|"
+        rowsHeaders = ''.join(f"S{row+1}|" for row in range(self.mainTable.rowCount()-1))
         rowsHeaders += f"Demandes"
 
-        columnsHeaders = ""
-        for column in range(self.mainTable.columnCount()-1):
-            columnsHeaders += f"D{column+1}|"
+        columnsHeaders = ''.join(f"D{column+1}|" for column in range(self.mainTable.columnCount()-1))
         columnsHeaders += f"Stocks"
 
-        self.mainTable.setHorizontalHeaderLabels(
-            columnsHeaders.split('|'))
-        self.mainTable.setVerticalHeaderLabels(
-            rowsHeaders.split('|')
-        )
+        self.mainTable.setHorizontalHeaderLabels(columnsHeaders.split('|'))
+        self.mainTable.setVerticalHeaderLabels(rowsHeaders.split('|'))
 
     def readInputs(self):
         nrows = self.mainTable.rowCount()
@@ -109,32 +99,20 @@ class Window(QtWidgets.QWidget):
         demandes = demandes[:-1]
 
         return couts, stocks, demandes
-    
-    # def flushExistingResultTable(self):
-    #     if self.n != 0 :
-    #             self.layout.removeWidget(self.resultTable)
-    #             self.resultTable.deleteLater()
-    #             self.layout.removeWidget(self.buttonResult)
-    #             self.buttonResult.deleteLater()
-    #             self.layout.removeWidget(self.buttonShowIterations)
-    #             self.buttonShowIterations.deleteLater()
 
     def northWest(self):
         couts, stocks, demandes = self.readInputs()
         self.solution = NorthWest(couts, stocks, demandes)
-        # self.flushExistingResultTable()
         self.printResults()
 
     def coutMinimal(self):
         couts, stocks, demandes = self.readInputs()
         self.solution = CoutMinimal(couts, stocks, demandes)
-        # self.flushExistingResultTable()
         self.printResults()
 
     def regretMax(self):
         couts, stocks, demandes = self.readInputs()
         self.solution = RegretMax(couts, stocks, demandes)
-        # self.flushExistingResultTable()
         self.printResults()
 
     def printResults(self):
@@ -158,14 +136,6 @@ class Window(QtWidgets.QWidget):
         x = self.mainTable.rowCount() - 1
         y = self.mainTable.columnCount() - 1
 
-        # self.layout.removeWidget(self.resultTable)
-        # self.resultTable.deleteLater()
-        # self.layout.removeWidget(self.buttonResult)
-        # self.buttonResult.deleteLater()
-        # self.layout.removeWidget(self.buttonShowIterations)
-        # self.buttonShowIterations.deleteLater()
-
-        self.buttonShowResult = QtWidgets.QPushButton("Afficher le resultat final", self)
         self.oTabWidget = QtWidgets.QTabWidget()
 
         self.iterationTables = []
@@ -179,16 +149,6 @@ class Window(QtWidgets.QWidget):
         self.oTabWidget.setWindowTitle("Iterations")
         self.oTabWidget.resize(640, 240)
         self.oTabWidget.show()
-        # self.layout.addWidget(self.oTabWidget, 3, 0, 1, 8)
-        # self.layout.addWidget(self.buttonShowResult, 4, 0, 1, 8)
-        # self.buttonShowResult.clicked.connect(self.bringBackResult)
-
-    # def bringBackResult(self) :
-    #     self.layout.removeWidget(self.oTabWidget)
-    #     self.oTabWidget.deleteLater()
-    #     self.layout.removeWidget(self.buttonShowResult)
-    #     self.buttonShowResult.deleteLater()
-    #     self.printResults()
        
 def fillTableWithZeros(table):
         for row in range(table.rowCount()):
@@ -205,19 +165,11 @@ def fillTable(table, data):
                 table.setItem(row, col, item)
 
 def setHeaders(table):
-    rowsHeaders = ""
-    for row in range(table.rowCount()):
-        rowsHeaders += f"S{row+1}|"
+    rowsHeaders = ''.join(f"S{row+1}|" for row in range(table.rowCount()-1))
+    columnsHeaders = ''.join(f"D{column+1}|" for column in range(table.columnCount()-1))
 
-    columnsHeaders = ""
-    for column in range(table.columnCount()):
-        columnsHeaders += f"D{column+1}|"
-
-    table.setHorizontalHeaderLabels(
-        columnsHeaders.split('|'))
-    table.setVerticalHeaderLabels(
-        rowsHeaders.split('|')
-    )
+    table.setHorizontalHeaderLabels(columnsHeaders.split('|'))
+    table.setVerticalHeaderLabels(rowsHeaders.split('|'))
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
