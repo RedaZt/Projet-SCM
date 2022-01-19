@@ -38,9 +38,9 @@ class Window(QtWidgets.QWidget):
         self.buttonRemoveRow.clicked.connect(self.removeRow)
         self.buttonAddColumn.clicked.connect(self.addColumn)
         self.buttonRemoveColumn.clicked.connect(self.removeColumn)
-        self.buttonNorthWest.clicked.connect(self.northWest)
-        self.buttonCoutMinimal.clicked.connect(self.coutMinimal)
-        self.buttonRegretMax.clicked.connect(self.regretMax)
+        self.buttonNorthWest.clicked.connect(lambda: self.calculateResults(NorthWest))
+        self.buttonCoutMinimal.clicked.connect(lambda: self.calculateResults(CoutMinimal))
+        self.buttonRegretMax.clicked.connect(lambda: self.calculateResults(RegretMax))
 
     def addRow(self):
         self.mainTable.insertRow(self.mainTable.rowCount())
@@ -100,19 +100,9 @@ class Window(QtWidgets.QWidget):
 
         return couts, stocks, demandes
 
-    def northWest(self):
+    def calculateResults(self, childFunction):
         couts, stocks, demandes = self.readInputs()
-        self.solution = NorthWest(couts, stocks, demandes)
-        self.printResults()
-
-    def coutMinimal(self):
-        couts, stocks, demandes = self.readInputs()
-        self.solution = CoutMinimal(couts, stocks, demandes)
-        self.printResults()
-
-    def regretMax(self):
-        couts, stocks, demandes = self.readInputs()
-        self.solution = RegretMax(couts, stocks, demandes)
+        self.solution = childFunction(couts, stocks, demandes)
         self.printResults()
 
     def printResults(self):
