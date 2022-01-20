@@ -15,14 +15,14 @@ class CoutMinimal:
         for i in range(len(self.couts)):
             resultat.append([0]*len(self.couts[i]))
 
-        d = []
-        for x in self.couts: d+=x
+        d = sum(self.couts,[])
 
         while any(x != 0 for x in self.stocks):
             index = d.index(min(d))
             if d.count(min(d)) > 1 :
                 for i in range(len(d)):
-                    if d[i] == min(d) and self.demandes[i % len(self.demandes)] > self.demandes[index % len(self.demandes)] : index = i
+                    if d[i] == min(d) and self.demandes[i % len(self.demandes)] > self.demandes[index % len(self.demandes)] : 
+                        index = i
 
             indexLigne = index // len(self.demandes)
             indexColonne = index % len(self.demandes)
@@ -37,8 +37,10 @@ class CoutMinimal:
                 self.stocks[indexLigne] = 0
                 
             if iterations != [] :
-                if iterations[-1] != resultat : iterations.append(copy.deepcopy(resultat))
-            else : iterations.append(copy.deepcopy(resultat))
+                if iterations[-1] != resultat : 
+                    iterations.append(copy.deepcopy(resultat))
+            else : 
+                iterations.append(copy.deepcopy(resultat))
             d[index] = max(d)+1
 
         return iterations, resultat
