@@ -41,7 +41,6 @@ class CoutMinimal:
                     iterations.append(copy.deepcopy(resultat))
             else : 
                 iterations.append(copy.deepcopy(resultat))
-                
             d[index] = max(d)+1
 
         return iterations, resultat
