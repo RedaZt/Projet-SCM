@@ -7,4 +7,5 @@ This was part of a school assignment where we were told to code an application t
 
 ## Usage
 * Download the Source Code.
-* Run the "main.py" script
+* Install requirements.
+* Run the "main.py" script.
