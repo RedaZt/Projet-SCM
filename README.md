@@ -30,7 +30,7 @@ in this project we chose to address three main algorithms, which I won't go too 
 Start by downloading the [source code]() and installing the required packages, upon running the "main.py" script you'll be met with this simple, self explanatory UI
 
 <p align="center">
-  <img src="/src/1.png" width="32%"/>
+  <img src="/src/1.png" width="70%"/>
 </p>
 
 In the top section you can see a customizable table where you can set the transportation cost between each source and each destination.
@@ -38,11 +38,11 @@ In the top section you can see a customizable table where you can set the transp
 After matching the values of the table to your problem, the next step is to solve it using one of the three methods, which you can do by just pressing the button with the name of your desired method.
 
 <p align="center">
-  <img src="/src/2.png" width="32%"/>
+  <img src="/src/2.png" width="70%"/>
 </p>
 
 the solution will appear in the bottom section, you can view the first five iterations using the "show iterations" button.
 
 <p align="center">
-  <img src="/src/3.png" width="32%"/>
+  <img src="/src/3.png" width="70%"/>
 </p>
