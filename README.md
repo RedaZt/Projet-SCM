@@ -18,6 +18,7 @@ in this project we chose to address three main algorithms, which I won't go too 
   * NorthWest Corner
   * Least Cost
   * Balas-Hammer
+  
 (You can check the code for these methods in the "/Projet-SCM/algorithms" folder)
 
 
