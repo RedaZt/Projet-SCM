@@ -1,7 +1,9 @@
 # Projet-SCM
-
-## Summary
 This was a school assignment where we were told to code an application that can calculate the transportation cost using three optimization algorithms (NorthWest Corner, Least Cost and Balas-Hammer algorithm).
+
+## Requirements
+  * [Python 3.4+](https://www.python.org/downloads/)
+  * [PyQt5](https://pypi.org/project/PyQt5/)
 
 
 ## Problematic
@@ -20,11 +22,6 @@ in this project we chose to address three main algorithms, which I won't go too 
   * Balas-Hammer
   
 (You can check the code for these algorithms in the "/Projet-SCM/algorithms" folder)
-
-
-## Requirements
-  * [Python 3.4+](https://www.python.org/downloads/)
-  * [PyQt5](https://pypi.org/project/PyQt5/)
 
 
 ## Usage
