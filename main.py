@@ -1,13 +1,13 @@
 import sys
 from PyQt5 import QtWidgets, QtCore, QtPrintSupport, QtGui
-from algorithms.northwest import NorthWest
-from algorithms.coutminimal import CoutMinimal
-from algorithms.regretmax import RegretMax
+from algorithms.NorthWestCorner import NorthWestCorner
+from algorithms.LeastCost import LeastCost
+from algorithms.BalasHammerAlgorithm import BalasHammerAlgorithm
 
 class Window(QtWidgets.QWidget):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
-        self.setWindowTitle(self.tr('Projet Supply Chain Management Par Reda Zitouni'))
+        self.setWindowTitle(self.tr('Supply Chain Management Project By Reda Zitouni'))
 
         self.n = 0 
 
@@ -16,13 +16,13 @@ class Window(QtWidgets.QWidget):
         fillTableWithZeros(self.mainTable)
         self.textbox = QtWidgets.QLineEdit()
         
-        self.buttonAddRow = QtWidgets.QPushButton('Ajouter une ligne', self)
-        self.buttonRemoveRow = QtWidgets.QPushButton('Supprimer une ligne', self)
-        self.buttonAddColumn = QtWidgets.QPushButton('Ajouter une colonne', self)
-        self.buttonRemoveColumn = QtWidgets.QPushButton('Supprimer une colonne', self)
-        self.buttonNorthWest = QtWidgets.QPushButton('Nord-Ouest', self)
-        self.buttonCoutMinimal = QtWidgets.QPushButton('Cout Minimal', self)
-        self.buttonRegretMax = QtWidgets.QPushButton('Regret Maximal', self)
+        self.buttonAddRow = QtWidgets.QPushButton('Add a line', self)
+        self.buttonRemoveRow = QtWidgets.QPushButton('Delete a line', self)
+        self.buttonAddColumn = QtWidgets.QPushButton('Add a column', self)
+        self.buttonRemoveColumn = QtWidgets.QPushButton('Delete a column', self)
+        self.buttonNorthWestCorner = QtWidgets.QPushButton('NorthWest Corner', self)
+        self.buttonLeastCost = QtWidgets.QPushButton('Least Cost', self)
+        self.buttonBalasHammerAlgorithm = QtWidgets.QPushButton('Balas-Hammer', self)
 
         self.layout = QtWidgets.QGridLayout(self)
         self.layout.addWidget(self.buttonAddRow, 0, 0, 1, 2)
@@ -30,17 +30,17 @@ class Window(QtWidgets.QWidget):
         self.layout.addWidget(self.buttonAddColumn, 0, 4, 1, 2)
         self.layout.addWidget(self.buttonRemoveColumn, 0, 6, 1, 2)
         self.layout.addWidget(self.mainTable, 1, 0, 1, 8)
-        self.layout.addWidget(self.buttonNorthWest, 2, 1, 1, 2)
-        self.layout.addWidget(self.buttonCoutMinimal, 2, 3, 1, 2)
-        self.layout.addWidget(self.buttonRegretMax, 2, 5, 1, 2)
+        self.layout.addWidget(self.buttonNorthWestCorner, 2, 1, 1, 2)
+        self.layout.addWidget(self.buttonLeastCost, 2, 3, 1, 2)
+        self.layout.addWidget(self.buttonBalasHammerAlgorithm, 2, 5, 1, 2)
 
         self.buttonAddRow.clicked.connect(self.addRow)
         self.buttonRemoveRow.clicked.connect(self.removeRow)
         self.buttonAddColumn.clicked.connect(self.addColumn)
         self.buttonRemoveColumn.clicked.connect(self.removeColumn)
-        self.buttonNorthWest.clicked.connect(lambda: self.calculateResults(NorthWest))
-        self.buttonCoutMinimal.clicked.connect(lambda: self.calculateResults(CoutMinimal))
-        self.buttonRegretMax.clicked.connect(lambda: self.calculateResults(RegretMax))
+        self.buttonNorthWestCorner.clicked.connect(lambda: self.calculateResults(NorthWestCorner))
+        self.buttonLeastCost.clicked.connect(lambda: self.calculateResults(LeastCost))
+        self.buttonBalasHammerAlgorithm.clicked.connect(lambda: self.calculateResults(BalasHammerAlgorithm))
 
     def addRow(self):
         self.mainTable.insertRow(self.mainTable.rowCount())
@@ -72,7 +72,7 @@ class Window(QtWidgets.QWidget):
 
     def setHeadersForMainTable(self):
         rowsHeaders = ''.join(f"S{row+1}|" for row in range(self.mainTable.rowCount()-1))
-        rowsHeaders += f"Demandes"
+        rowsHeaders += f"Demands"
 
         columnsHeaders = ''.join(f"D{column+1}|" for column in range(self.mainTable.columnCount()-1))
         columnsHeaders += f"Stocks"
@@ -112,8 +112,8 @@ class Window(QtWidgets.QWidget):
         self.resultTable = QtWidgets.QTableWidget(x, y, self)
         setHeaders(self.resultTable)
         fillTable(self.resultTable, self.solution.resultat)
-        self.buttonResult = QtWidgets.QPushButton(f"Cout Total = {self.solution.coutFinal}", self)
-        self.buttonShowIterations = QtWidgets.QPushButton('Afficher les iterations', self)
+        self.buttonResult = QtWidgets.QPushButton(f"Total Cost = {self.solution.coutFinal}", self)
+        self.buttonShowIterations = QtWidgets.QPushButton('Show iterations', self)
         
         self.layout.addWidget(self.resultTable, 3, 0, 5, 8)
         self.layout.addWidget(self.buttonResult, 8, 0, 2, 8)

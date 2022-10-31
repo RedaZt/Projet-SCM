@@ -1,6 +1,6 @@
 import copy
 
-class NorthWest:
+class NorthWestCorner:
     def __init__(self, couts, stocks, demandes):
         self.couts = couts
         self.stocks = stocks

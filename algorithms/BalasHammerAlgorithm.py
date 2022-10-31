@@ -2,7 +2,7 @@
 
 import copy
 
-class RegretMax:
+class BalasHammerAlgorithm:
     def __init__(self, couts, stocks, demandes):
         self.couts = couts
         self.stocks = stocks
