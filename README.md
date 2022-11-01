@@ -26,6 +26,7 @@ in this project we chose to address three main algorithms, which I won't go too 
 
 ## Usage
 Start by downloading the "Projet-SCM.zip" file from the latest release [here](https://github.com/RedaZt/Projet-SCM/releases) and installing the required packages. 
+
 Upon running the "main.py" script you'll be met with this simple, self explanatory UI:
 
 <p align="center">
