@@ -15,13 +15,13 @@ What I just described to you is known as the transportation problem. It is a spe
 
 
 ## Algorithms
-Luckily for us this problem has already been worked on and there exist some algorithms and methods that you can use to help you lower the transportation cost.
-in this project we chose to address three main algorithms, which I won't go too deep into, but feel free to check them out if you’re interested.
+Luckily for us, this problem has already been worked on and there are some algorithms and methods that you can use to help lower the transportation cost.
+In this project, we chose to address three main algorithms, which I won't go too deep into, but I'd recommend checking them out if you’re interested.
   * NorthWest Corner
   * Least Cost
   * Balas-Hammer
   
-(You can check the code for these algorithms in the [algorithms folder](https://github.com/RedaZt/Projet-SCM/tree/main/algorithms))
+(You can find the code for these algorithms in the [algorithms folder](https://github.com/RedaZt/Projet-SCM/tree/main/algorithms))
 
 
 ## Usage
