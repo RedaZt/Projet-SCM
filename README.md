@@ -21,7 +21,7 @@ in this project we chose to address three main algorithms, which I won't go too 
   * Least Cost
   * Balas-Hammer
   
-(You can check the code for these algorithms in the "/Projet-SCM/algorithms" folder)
+(You can check the code for these algorithms in the [algorithms folder](/Projet-SCM/algorithms))
 
 
 ## Usage
