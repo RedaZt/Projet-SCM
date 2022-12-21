@@ -1,5 +1,5 @@
 # Projet-SCM
-This was a school assignment where we were told to code an application that can calculate the transportation cost using three optimization algorithms (NorthWest Corner, Least Cost and Balas-Hammer algorithm).
+This was a school assignment where we were told to code an application that can calculate the transportation cost using three optimization algorithms (NorthWest Corner, Least Cost, and Balas-Hammer algorithm).
 
 ## Requirements
   * [Python 3.4+](https://www.python.org/downloads/)
