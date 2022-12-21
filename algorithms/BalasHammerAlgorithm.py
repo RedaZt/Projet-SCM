@@ -1,4 +1,4 @@
-#TODO : Fix the when there is two max values in "regret"s list
+#TODO : two max "regret" values bug
 
 import copy
 
