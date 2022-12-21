@@ -41,8 +41,10 @@ After matching the values of the table to your problem, the next step is to solv
   <img src="/src/2.png" width="70%"/>
 </p>
 
-the solution will appear in the bottom section, you can view the first five iterations using the "show iterations" button.
+the solution will appear in the bottom section as shown in the example below.
 
 <p align="center">
   <img src="/src/3.png" width="70%"/>
 </p>
+
+You can view the first five iterations using the "show iterations" button.
