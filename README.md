@@ -47,4 +47,4 @@ the solution will appear in the bottom section as shown in the example below.
   <img src="/src/3.png" width="70%"/>
 </p>
 
-You can view the first five iterations using the "show iterations" button.
+You can view the first five iterations using the "show iterations" button at the bottom.
