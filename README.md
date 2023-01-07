@@ -27,7 +27,7 @@ In this project, we chose to address three main algorithms, which I won't go too
 ## Usage
 After installing the required packages, start by downloading and extracting the "Projet-SCM" zip file from the latest release [here](https://github.com/RedaZt/Projet-SCM/releases). 
 
-Upon running the "main.py" script you'll be met with this simple, self explanatory UI:
+Upon running the "main.py" script you'll be met with this simple, self explanatory window:
 
 <p align="center">
   <img src="/src/1.png" width="70%"/>
@@ -60,3 +60,5 @@ You can view the first five iterations using the "show iterations" button at the
 <p align="center">
   <img src="/src/6.png" width="70%"/>
 </p>
+
+(I chose to limit the number of displayed iterations to 5)

@@ -53,7 +53,6 @@ class Window(QtWidgets.QWidget):
     def removeRow(self):
         if  self.mainTable.rowCount() > 0 :
             self.mainTable.removeRow(self.mainTable.rowCount() - 1)
-        
         self.setHeadersForMainTable()
 
     def addColumn(self):
@@ -67,7 +66,6 @@ class Window(QtWidgets.QWidget):
     def removeColumn(self):
         if  self.mainTable.columnCount() > 0 :
             self.mainTable.removeColumn(self.mainTable.columnCount() - 1)
-
         self.setHeadersForMainTable()
 
     def setHeadersForMainTable(self):
@@ -155,8 +153,8 @@ def fillTable(table, data):
                 table.setItem(row, col, item)
 
 def setHeaders(table):
-    rowsHeaders = ''.join(f"S{row+1}|" for row in range(table.rowCount()-1))
-    columnsHeaders = ''.join(f"D{column+1}|" for column in range(table.columnCount()-1))
+    rowsHeaders = ''.join(f"S{row+1}|" for row in range(table.rowCount()))
+    columnsHeaders = ''.join(f"D{column+1}|" for column in range(table.columnCount()))
 
     table.setHorizontalHeaderLabels(columnsHeaders.split('|'))
     table.setVerticalHeaderLabels(rowsHeaders.split('|'))

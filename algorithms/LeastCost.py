@@ -13,35 +13,35 @@ class LeastCost:
         resultat = []
 
         for i in range(len(self.couts)):
-            resultat.append([0]*len(self.couts[i]))
+            resultat.append([0] * len(self.couts[i]))
 
         d = sum(self.couts,[])
 
         while any(x != 0 for x in self.stocks):
             index = d.index(min(d))
-            if d.count(min(d)) > 1 :
+            if d.count(min(d)) > 1:
                 for i in range(len(d)):
-                    if d[i] == min(d) and self.demandes[i % len(self.demandes)] > self.demandes[index % len(self.demandes)] : 
+                    if d[i] == min(d) and self.demandes[i % len(self.demandes)] > self.demandes[index % len(self.demandes)]: 
                         index = i
 
-            indexLigne = index // len(self.demandes)
-            indexColonne = index % len(self.demandes)
+            indexL = index // len(self.demandes)
+            indexC = index % len(self.demandes)
             
-            if self.stocks[indexLigne] >= self.demandes[indexColonne] :
-                resultat[indexLigne][indexColonne] = self.demandes[indexColonne]
-                self.stocks[indexLigne] -= self.demandes[indexColonne]
-                self.demandes[indexColonne] = 0
+            if self.stocks[indexL] >= self.demandes[indexC]:
+                resultat[indexL][indexC] = self.demandes[indexC]
+                self.stocks[indexL] -= self.demandes[indexC]
+                self.demandes[indexC] = 0
             else:
-                resultat[indexLigne][indexColonne] = self.stocks[indexLigne]
-                self.demandes[indexColonne] -= self.stocks[indexLigne]
-                self.stocks[indexLigne] = 0
+                resultat[indexL][indexC] = self.stocks[indexL]
+                self.demandes[indexC] -= self.stocks[indexL]
+                self.stocks[indexL] = 0
                 
-            if iterations != [] :
-                if iterations[-1] != resultat : 
+            if iterations != []:
+                if iterations[-1] != resultat: 
                     iterations.append(copy.deepcopy(resultat))
-            else : 
+            else: 
                 iterations.append(copy.deepcopy(resultat))
-            d[index] = max(d)+1
+            d[index] = max(d) + 1
 
         return iterations, resultat
 
