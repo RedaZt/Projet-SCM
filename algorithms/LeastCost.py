@@ -17,7 +17,7 @@ class LeastCost:
 
         d = sum(self.couts,[])
 
-        while any(x != 0 for x in self.stocks):
+        while any(x != 0 for x in min(self.stocks, self.demandes, key=sum)):
             index = d.index(min(d))
             if d.count(min(d)) > 1:
                 for i in range(len(d)):

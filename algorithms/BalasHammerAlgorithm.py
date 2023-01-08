@@ -14,7 +14,7 @@ class BalasHammerAlgorithm:
         for i in range(len(self.couts)):
             resultat.append([0] * len(self.couts[i]))
 
-        while any(x != 0 for x in self.stocks):
+        while any(x != 0 for x in min(self.stocks, self.demandes, key=sum)):
             regretsL=[]
             regretsC=[]
 
@@ -25,7 +25,7 @@ class BalasHammerAlgorithm:
                         if self.stocks[j] !=0: 
                             d.append(self.couts[j][i])
                         else: 
-                            d.append(9**50)
+                            d.append(9**10)
                     d.sort()
                     regretsC.append(d[1]-d[0])
                 else: 
@@ -38,7 +38,7 @@ class BalasHammerAlgorithm:
                         if self.demandes[j] != 0: 
                             d.append(self.couts[i][j])
                         else: 
-                            d.append(9**50)
+                            d.append(9**10)
                     d.sort()
                     regretsL.append(d[1]-d[0])
                 else: 
